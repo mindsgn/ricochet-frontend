@@ -2,23 +2,22 @@ import { showErrorToast } from 'components/common/Toaster';
 import { UpgradePanel } from 'components/layout/UpgradePanel';
 import { UserSettings } from 'components/layout/UserSettings';
 import { Coin } from 'constants/coins';
-import { useLang } from 'hooks/useLang';
 import React, {
   ChangeEvent,
   FC, useCallback, useState, useEffect,
 } from 'react';
 import { useDispatch } from 'react-redux';
 import {
-  approveAction, downgradeAction, showTokenList, swapAction, upgradeAction,
+  approveAction, downgradeAction, showTokenList, swapAction,
 } from 'store/main/actionCreators';
 import { useShallowSelector } from 'hooks/useShallowSelector';
 import { selectMain } from 'store/main/selectors';
 import { downgradeTokensList } from 'constants/downgradeConfig';
 import { swapTokensList } from 'constants/swapConfig';
 import { useTranslation } from 'i18n';
-import styles from './styles.module.scss';
 import { flowConfig } from 'constants/flowConfig';
 import { rexSuperSwapAddress } from 'constants/polygon_config';
+import styles from './styles.module.scss';
 
 interface IProps {
   address: string;
@@ -28,7 +27,7 @@ export const SwapContainer:FC<IProps> = ({ address, balance }) => {
   const state = useShallowSelector(selectMain);
   const {
     balances, isLoading, isLoadingDowngrade,
-    isLoadingUpgrade, selectedDowngradeCoin, selectedUpgradeCoin, selectedSwapCoin, isReadOnly,
+    isLoadingUpgrade, selectedDowngradeCoin, selectedSwapCoin, isReadOnly,
   } = state;
   const [showWarningToolTip, setShowWarningToolTip] = useState(false);
   const [downgradeCoin, setDowngradeCoin] = useState(selectedDowngradeCoin);
@@ -44,7 +43,6 @@ export const SwapContainer:FC<IProps> = ({ address, balance }) => {
   const [upgradeValue, setUpgradeValue] = useState('');
   const dispatch = useDispatch();
 
-  const { language, changeLanguage } = useLang();
   const { t } = useTranslation('main');
 
   const handleVisionModal = (coinType: Coin) => {

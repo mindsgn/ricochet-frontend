@@ -12,11 +12,11 @@ import {
   WBTCAddress, WBTCxAddress,
   SUSHIAddress, SUSHIxAddress,
   IDLEAddress, IDLExAddress,
+  rexSuperSwapAddress,
 } from 'constants/polygon_config';
 import { upgradeTokensList } from 'constants/upgradeConfig';
 import { mainSetState } from '../actionCreators';
 import { selectBalances, selectMain } from '../selectors';
-import { rexSuperSwapAddress } from 'constants/polygon_config';
 
 export function* checkIfApprove(
   tokenAddress: string,

@@ -1,18 +1,11 @@
-import { Button } from 'components/common/Button';
 import React from 'react';
 import { InvestNav } from 'components/layout/InvestNav';
-import { getContract } from 'utils/getContract';
-import { tradeABI } from 'constants/abis';
-import { rexSuperSwapAddress, RICAddress } from 'constants/polygon_config';
+import { RICAddress } from 'constants/polygon_config';
 import { selectMain } from 'store/main/selectors';
 import { useShallowSelector } from 'hooks/useShallowSelector';
-import { Protocol } from '@uniswap/router-sdk';
-import { AlphaRouter } from '@uniswap/smart-order-router';
 import {
-  CurrencyAmount, Percent, Token, TradeType, 
+  Token, 
 } from '@uniswap/sdk-core';
-import { JSBI } from '@uniswap/sdk';
-import { ethers } from 'ethers';
 import { useTranslation } from 'react-i18next';
 
 import { UserSettings } from 'components/layout/UserSettings';
@@ -26,14 +19,14 @@ export const TradeContainer = () => {
   } = state;
   const { t } = useTranslation();
   
-  const { web3 } = useShallowSelector(selectMain);
-  const contract = getContract(rexSuperSwapAddress, tradeABI, web3);
-  const MATICx = '0x3aD736904E9e65189c3000c7DD2c8AC8bB7cD4e3';
-  const USDCx = '0xCAa7349CEA390F89641fe306D93591f87595dc1F';
+  // const { web3 } = useShallowSelector(selectMain);
+  // const contract = getContract(rexSuperSwapAddress, tradeABI, web3);
+  // const MATICx = '0x3aD736904E9e65189c3000c7DD2c8AC8bB7cD4e3';
+  // const USDCx = '0xCAa7349CEA390F89641fe306D93591f87595dc1F';
   // const provider = new ethers.providers.Web3Provider((web3.currentProvider as any));
-  const jsonRpcEndoint = "https://eth-rinkeby.alchemyapi.io/v2/EympKbVd25P3Rzq3LF1Pa3-OteT_0lVn";
-  const provider = new ethers.providers.JsonRpcProvider(jsonRpcEndoint, 137);
-  const router = new AlphaRouter({ chainId: 137, provider: (provider as any) });
+  // const jsonRpcEndoint = 'https://eth-rinkeby.alchemyapi.io/v2/EympKbVd25P3Rzq3LF1Pa3-OteT_0lVn';
+  // const provider = new ethers.providers.JsonRpcProvider(jsonRpcEndoint, 137);
+  // const router = new AlphaRouter({ chainId: 137, provider: (provider as any) });
   
   const MATIC = new Token(
     137, // chainID
@@ -54,10 +47,10 @@ export const TradeContainer = () => {
   console.log('MATIC', MATIC);
   console.log('USDC', USDC);
 
-  const typedValueParsed = '100';
-  const amount = CurrencyAmount.fromRawAmount(MATIC, JSBI.BigInt(typedValueParsed));
+  // const typedValueParsed = '100';
+  // const amount = CurrencyAmount.fromRawAmount(MATIC, JSBI.BigInt(typedValueParsed));
 
-  async function handleSwap() {
+  /* async function handleSwap() {
     const route = await router.route(
       amount,
       USDC,
@@ -82,7 +75,8 @@ export const TradeContainer = () => {
           MATICx,
           '100',
           '0',
-          ['0x2791bca1f2de4661ed88a30c99a7a9449aa84174', '0x7ceb23fd6bc0add59e62ac25578270cff1b9f619'],
+          ['0x2791bca1f2de4661ed88a30c99a7a9449aa84174', 
+          '0x7ceb23fd6bc0add59e62ac25578270cff1b9f619'],
           ['500'],
         )
         .send({
@@ -90,7 +84,7 @@ export const TradeContainer = () => {
         });
       console.log(response);
     }
-  }
+  } */
 
   return (
     <div className={styles.outer_container}>

@@ -204,8 +204,8 @@ export const UpgradeContainer: FC<IProps> = ({ address, balance }) => {
     setDownGradeValue(balances[downgradeAddress]);
   };
 
-  const handleEmpty = (coinType: Coin) => {
-    console.log("handleEmpty");
+  const handleEmpty = () => {
+    console.log('handleEmpty');
   };
 
   const totalBalance = upgradeTokensList.reduce((total, token) => {

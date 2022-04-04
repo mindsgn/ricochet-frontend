@@ -8,7 +8,12 @@ import { stopFlowSaga } from './stopFlow';
 import { startFlowSaga } from './startFlow';
 import { mainCheckSaga } from './mainCheckSaga';
 import { switchNetworkSaga } from './switchNetworkSaga';
-import { selectDowngradeCoinSaga, selectSwapCoinSaga, selectUpgradeCoinSaga, showTokenListSaga } from './selectCoinSaga';
+import { 
+  selectDowngradeCoinSaga, 
+  selectSwapCoinSaga, 
+  selectUpgradeCoinSaga, 
+  showTokenListSaga,
+} from './selectCoinSaga';
 import { loadReadOnlyData } from './loadReadOnlyData';
 import { connectWeb3Modal } from './connectWeb3Modal';
 

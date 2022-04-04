@@ -9,7 +9,6 @@ import {
   SUSHIxAddress,
   IDLExAddress,
   RICAddress,
-  ZeroAddress,
 } from './polygon_config';
 
 export const swapTokensList:{
