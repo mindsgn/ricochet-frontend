@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 import ButtonNew from 'components/common/ButtonNew';
 import { useTranslation } from 'i18n';
+import { FontIcon, FontIconName } from 'components/common/FontIcon';
 import { Coin, iconsCoin } from '../../../constants/coins';
 import styles from './styles.module.scss';
 
@@ -11,10 +12,11 @@ interface IProps {
   balance?: number,
   className: string,
   onClickMax: (() => void) | undefined,
+  onSelectToken: (coin: Coin) => void,
 }
 
 export const CoinBalance: FC<IProps> = ({
-  nameCoin, balance, className, onClickMax,
+  nameCoin, balance, className, onClickMax, onSelectToken,
 }) => {
   const { t } = useTranslation();
   
@@ -29,6 +31,7 @@ export const CoinBalance: FC<IProps> = ({
             alt={nameCoin}
             width="40px"
             aria-hidden="true"
+            onClick={() => onSelectToken(nameCoin)}
           />
         </div>
         <div className={styles.balance_wrap}>
@@ -50,7 +53,12 @@ export const CoinBalance: FC<IProps> = ({
             </div>
           </div>
         </div>
-       
+        <div
+          onClick={() => onSelectToken(nameCoin)}
+          aria-hidden="true"
+        >
+          <FontIcon name={FontIconName.ArrowDown} className={styles.arrow_down} size={35} />
+        </div>
       </div>
     </ButtonNew>
   );
